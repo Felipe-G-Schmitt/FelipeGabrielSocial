@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import SplashScreen from "./screens/SplashScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -30,7 +31,7 @@ export default function RootNavigation() {
           name="HomeScreen"
           component={HomeScreen}
           options={{
-            headerShown: true, 
+            headerShown: false, 
             headerStyle: {
               backgroundColor: '#000',
             },
@@ -41,7 +42,14 @@ export default function RootNavigation() {
           name="LoginScreen"
           component={LoginScreen}
           options={{
-            headerShown: false, 
+            headerShown: true, 
+          }}
+        />
+        <Stack.Screen
+          name="RegisterScreen"
+          component={RegisterScreen}
+          options={{
+            headerShown: true, 
           }}
         />
       </Stack.Navigator>
@@ -55,6 +63,7 @@ function TabsNavigation() {
   return (
     <tabs.Navigator
         activeColor="#fff"
+        activeBackgroundColor="#fff"
         inactiveColor="#ffffff"
         barStyle={{ backgroundColor: '#2BB7FF' }}>
       <tabs.Screen
@@ -63,7 +72,7 @@ function TabsNavigation() {
         options={{
           tabBarLabel: "Início",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={color} size={26} />
+            <MaterialCommunityIcons name="home" color={"#2BB7FF"} size={26} />
           ),
         }}
       />

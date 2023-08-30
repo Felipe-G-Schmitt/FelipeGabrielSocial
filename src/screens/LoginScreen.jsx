@@ -21,13 +21,13 @@ export default function LoginScreen({ navigation }) {
         const errorCode = error.code;
         // Mensagem de erro
         if (errorCode === "auth/invalid-email") {
-          console.log("Email inválido!");
+          alert("Email inválido!");
         }
         if (errorCode === "auth/user-not-found") {
-          console.log("Usuário não encontrado!");
+          alert("Usuário não encontrado!");
         }
         if (errorCode === "auth/wrong-password") {
-          console.log("Senha incorreta!");
+          alert("Senha incorreta!");
         }
       });
   }
@@ -46,16 +46,13 @@ export default function LoginScreen({ navigation }) {
                 label={"Email"}
                 value={email}
                 onChangeText={setEmail}
-                mode="outlined"
                 style={styles.input}
               />
-              <View style={styles.distBottom}></View>
               <TextInput
                 label={"Senha"}
                 value={senha}
                 onChangeText={setSenha}
                 secureTextEntry={true}
-                mode="outlined"
                 style={styles.input}
               />
               <View style={styles.distBottom}></View>
@@ -63,7 +60,8 @@ export default function LoginScreen({ navigation }) {
                 mode="contained"
                 style={{
                   width: "100%",
-                  backgroundColor: "#ff4655",
+                  marginTop: 10,
+                  backgroundColor: "#2BB7FF",
                   borderRadius: 0,
                 }}
                 textColor="#fff"

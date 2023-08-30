@@ -15,6 +15,19 @@ export const styles = StyleSheet.create({
     marginBottom: 20,
   },
 
+  title: {
+    fontSize: 30,
+    fontWeight: "bold",
+    alignItems: "center",
+    textAlign: "center",
+  },
+
+  input: {
+    width: "100%",
+    backgroundColor: "#fff",
+    textColor:"#fff"
+  },
+
 });
 
 export default styles;
