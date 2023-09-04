@@ -14,6 +14,7 @@ export default function LoginScreen({ navigation }) {
     signInWithEmailAndPassword(auth, email, senha)
       .then((userCredential) => {
         console.log("Login realizado com sucesso!");
+        alert("Login realizado com sucesso!")
         navigation.navigate("HomeScreen");
       })
       .catch((error) => {
