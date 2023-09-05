@@ -6,6 +6,7 @@ import SplashScreen from "./screens/SplashScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
+import Feed from "./screens/Feed";
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,13 @@ export default function RootNavigation() {
             headerShown: true, 
           }}
         />
+        <Stack.Screen
+          name="Feed"
+          component={Feed}
+          options={{
+            headerShown: false, 
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -72,7 +80,17 @@ function TabsNavigation() {
         options={{
           tabBarLabel: "Início",
           tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="home" color={"#2BB7FF"} size={26} />
+            <MaterialCommunityIcons name="home" color={"#FFFFFF"} size={26} />
+          ),
+        }}
+      />
+      <tabs.Screen
+        name="Feed"
+        component={Feed}
+        options={{
+          tabBarLabel: "Feed",
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="view-list" color={"#FFFFFF"} size={26} />
           ),
         }}
       />

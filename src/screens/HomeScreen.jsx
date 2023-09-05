@@ -22,6 +22,10 @@ export default function HomeScreen({ navigation }) {
       try {
         const response = await uploadBytes(storageRef, image);
         console.log('Imagem enviada com sucesso:', response);
+        alert("Imagem enviada com sucesso!")
+        setTimeout(() => {
+          navigation.navigate("Feed");
+        }, 700);
         const downloadURL = await getDownloadURL(storageRef);
         console.log('URL de download da imagem:', downloadURL);
         // Agora você pode salvar a URL de download em seu banco de dados, se necessário.
@@ -124,7 +128,7 @@ export default function HomeScreen({ navigation }) {
           >
             Publicar
           </Button>
-        <Button mode="contained" style={{marginTop: 400, position: "fixed", backgroundColor:"#2BB7FF", alignSelf:"center"}} onPress={logout}>Deslogar</Button>
+        <Button mode="contained" style={{marginTop: 380, position: "fixed", backgroundColor:"#2BB7FF", alignSelf:"center"}} onPress={logout}>Deslogar</Button>
       </View>
     </View>
     )
