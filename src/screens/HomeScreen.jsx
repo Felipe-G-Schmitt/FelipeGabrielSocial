@@ -104,7 +104,7 @@ export default function HomeScreen({ navigation }) {
       <View style={styles.container}>
         <Text style={{ fontSize: 20, marginBottom: 15}}>Seja Bem-Vindo!</Text>
         <View style={{ backgroundColor:"#EBEBEB", width: "85%", borderWidth: 3, borderRadius: 10, borderColor: "#2BB7FF"}}>
-          <Text style={{ fontSize: 20, marginBottom: 15, marginTop: 15, textAlign:"center"}}>Publique a imagem que você quiser!</Text>
+          <Text style={{ fontSize: 20, marginBottom: 15, marginTop: 15, textAlign:"center"}}>Publique uma imagem!</Text>
           <View style={{ marginTop: 5, width: "60%", alignSelf:"center"}}>
           <Button
             style={{ backgroundColor: "#2BB7FF", marginTop: 5, borderRadius: 0 }}
@@ -116,6 +116,7 @@ export default function HomeScreen({ navigation }) {
           {image && (
             <Image source={{ uri: image.uri }} style={{ width: 200, height: 200, alignSelf: 'center', marginTop: 15 }} />
           )}
+          </View>
           <Button
             mode="contained"
             style={{ marginTop: 15, backgroundColor: "#2BB7FF", borderRadius: 0 }}
@@ -123,7 +124,6 @@ export default function HomeScreen({ navigation }) {
           >
             Publicar
           </Button>
-        </View>
         <Button mode="contained" style={{marginTop: 700, position: "fixed", backgroundColor:"#2BB7FF"}} onPress={logout}>Deslogar</Button>
       </View>
     </View>

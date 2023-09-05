@@ -50,6 +50,7 @@ export default function RegisterScreen({ navigation }) {
                 value={email}
                 onChangeText={setEmail}
                 style={styles.input}
+                activeUnderlineColor="#2BB7FF"
               />
               <TextInput
                 label={"Senha"}
@@ -57,6 +58,7 @@ export default function RegisterScreen({ navigation }) {
                 value={senha}
                 onChangeText={setSenha}
                 style={styles.input}
+                activeUnderlineColor="#2BB7FF"
               />
               <View style={styles.distBottom}></View>
               <Button

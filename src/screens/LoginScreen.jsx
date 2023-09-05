@@ -48,6 +48,7 @@ export default function LoginScreen({ navigation }) {
                 value={email}
                 onChangeText={setEmail}
                 style={styles.input}
+                activeUnderlineColor="#2BB7FF"
               />
               <TextInput
                 label={"Senha"}
@@ -55,6 +56,7 @@ export default function LoginScreen({ navigation }) {
                 onChangeText={setSenha}
                 secureTextEntry={true}
                 style={styles.input}
+                activeUnderlineColor="#2BB7FF"
               />
               <View style={styles.distBottom}></View>
               <Button
