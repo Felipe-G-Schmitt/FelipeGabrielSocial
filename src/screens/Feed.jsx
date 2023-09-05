@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Image, FlatList } from "react-native";
+import { View, Image, FlatList, ScrollView } from "react-native";
 import { Button, Text } from "react-native-paper";
 import styles from "../utils/styles";
 import { auth } from "../config/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
-import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
+import { ref, uploadBytes } from "firebase/storage";
+import { getStorage, listAll, getDownloadURL } from "firebase/storage";
 
 export default function Feed({ navigation }) {
   const [images, setImages] = useState([]);
@@ -78,11 +79,13 @@ export default function Feed({ navigation }) {
     </View>
   ) 
   else return (
+  <ScrollView style={{ backgroundColor: "white"}}>
     <View style={styles.container}>
+      
       <Text style={{ fontSize: 20, marginBottom: 15, marginTop: 30 }}>Seja Bem-Vindo!</Text>
       {imagesUrl.map((url) => (
                 <Image
-                    style={{ width: 200, height: 200 }}
+                    style={{ width: 200, height: 200, marginBottom: 10, borderColor: "#2BB7FF", borderWidth: 3, borderRadius: 10, }}
                     source={{
                     uri: url,
                     }}
@@ -90,11 +93,13 @@ export default function Feed({ navigation }) {
             ))}
       <Button
         mode="contained"
-        style={{ backgroundColor: "#2BB7FF", color: "#fff" }}
+        style={{ backgroundColor: "#2BB7FF", color: "#fff", marginBottom: 10 }}
         onPress={logout}
       >
         Deslogar
       </Button>
+      
     </View>
+    </ScrollView>
   );
 }

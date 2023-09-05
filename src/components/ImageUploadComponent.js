@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Image, Button } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { collection, addDoc } from 'firebase/firestore';
-import db from './firebaseConfig';
+import db from '../config/firebase';
 
 const ImageUploadComponent = () => {
   const [image, setImage] = useState(null);
