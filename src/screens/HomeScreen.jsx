@@ -124,7 +124,7 @@ export default function HomeScreen({ navigation }) {
           >
             Publicar
           </Button>
-        <Button mode="contained" style={{marginTop: 700, position: "fixed", backgroundColor:"#2BB7FF"}} onPress={logout}>Deslogar</Button>
+        <Button mode="contained" style={{marginTop: 400, position: "fixed", backgroundColor:"#2BB7FF", alignSelf:"center"}} onPress={logout}>Deslogar</Button>
       </View>
     </View>
     )
