@@ -7,7 +7,6 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { getStorage, ref, listAll, getDownloadURL } from "firebase/storage";
 
 export default function Feed({ navigation }) {
-  const storage = getStorage();
   const [images, setImages] = useState([]);
   const [logado, setLogado] = useState("Deslogado")
   const user = auth.currentUser;
@@ -29,21 +28,18 @@ export default function Feed({ navigation }) {
         }
     })
 
-  async function loadImages() {
-    try {
-      const storageRef = ref(storage, "images"); // Change "images" to your storage path.
-      const imageList = await listAll(storageRef);
-      const imageUrls = await Promise.all(
-        imageList.items.map(async (item) => {
-          const url = await getDownloadURL(item);
-          return url;
-        })
-      );
-      setImages(imageUrls);
-    } catch (error) {
-      console.error("Error loading images:", error);
-    }
-  }
+    const [imagesUrl, setImagesUrl] = useState([])
+
+    const storage = getStorage();
+    useEffect(() => {
+        setURLsToFilesInBucket();
+    }, [])
+
+    const setURLsToFilesInBucket = async () => {
+        const imageRefs = await listAll(ref(storage, "images"));
+        const urls = await Promise.all(imageRefs.items.map((imageRef) => getDownloadURL(imageRef)));
+        setImagesUrl(urls);
+    };
 
   if(!user)return (
     <View style={styles.container}>
@@ -84,13 +80,14 @@ export default function Feed({ navigation }) {
   else return (
     <View style={styles.container}>
       <Text style={{ fontSize: 20, marginBottom: 15, marginTop: 30 }}>Seja Bem-Vindo!</Text>
-      <FlatList
-        data={images}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <Image source={{ uri: item }} style={{ width: 200, height: 200 }} />
-        )}
-      />
+      {imagesUrl.map((url) => (
+                <Image
+                    style={{ width: 200, height: 200 }}
+                    source={{
+                    uri: url,
+                    }}
+                />
+            ))}
       <Button
         mode="contained"
         style={{ backgroundColor: "#2BB7FF", color: "#fff" }}
